@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>AddThing</servlet-name>
+		<servlet-class>com.bw.AddThing</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddThing</servlet-name>
+		<url-pattern>/AddThing</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetAllThings</servlet-name>
+		<servlet-class>com.bw.GetAllThings</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllThings</servlet-name>
+		<url-pattern>/GetAllThings</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>LogIn</servlet-name>
+		<servlet-class>com.bw.LogIn</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogIn</servlet-name>
+		<url-pattern>/LogIn</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>com.bw.Register</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/Register</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetThing</servlet-name>
+		<servlet-class>com.bw.GetThing</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetThing</servlet-name>
+		<url-pattern>/GetThing</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetAllDoors</servlet-name>
+		<servlet-class>com.bw.GetAllDoors</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllDoors</servlet-name>
+		<url-pattern>/GetAllDoors</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>UpdateThing</servlet-name>
+		<servlet-class>com.bw.UpdateThing</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateThing</servlet-name>
+		<url-pattern>/UpdateThing</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+		<welcome-file>BabyWatch.html</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

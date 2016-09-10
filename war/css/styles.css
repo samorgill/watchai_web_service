@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+
+#userArea{
+	float: left
+	
+}
+
+#add{
+	
+	float: left;
+	width: 25%;
+	
+}
+
+#resultScreen{
+	float: left;
+	padding-top: 10px;
+	padding-right: 10px; 
+	padding-bottom: 10px;
+}
