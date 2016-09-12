@@ -209,4 +209,15 @@ public enum DAO {
 		return doory;
 	}
 	
+	/**
+	 * Add Zone
+	 * @param zone
+	 */
+	public void addZone(String zone, String user) {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		NamespaceManager.set(user);
+		Entity en = new Entity("Zone", zone);
+		datastore.put(en);
+	}
+	
 }

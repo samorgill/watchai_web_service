@@ -13,6 +13,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/AddThing</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>AddZone</servlet-name>
+		<servlet-class>com.bw.Add.Zones</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddZone</servlet-name>
+		<url-pattern>/AddZone</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>GetAllThings</servlet-name>
 		<servlet-class>com.bw.GetAllThings</servlet-class>
 	</servlet>

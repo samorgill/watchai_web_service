@@ -4,7 +4,9 @@
  * JQuery utils
  */
 
-
+function openZone(){
+	window.open("Zones.html");
+}
 
 /*JQuery for inserting a door into the database
 $(document).ready(function(){
@@ -86,6 +88,7 @@ function addit(){
 $(document).ready(function(){
 	$("#register").click(function(){
 		user = $("#user2").val();
+		localStorage.setItem("user", user);
 		var pass = $("#pass2").val();
 		var email = $("#email").val();
 		var phone = $("#phone").val();
@@ -93,10 +96,10 @@ $(document).ready(function(){
 		
 		init();
 		
-		$('#userArea').append("Welcome home, " + user);		
+		$('#userArea').append(localStorage.getItem("user"));	
 		
 		$.ajax({
-			url: 'Register?user2=' + user + "&pass2=" + pass + "&email=" + email + "&phone" + phone + "&hub=" + hub,
+			url: 'Register?user2=' + user + "&pass2=" + pass + "&email=" + email + "&phone=" + phone + "&hub=" + hub,
 			type: 'POST',
 			dataType: 'json',
 			error: function(){
@@ -113,24 +116,13 @@ $(document).ready(function(){
 	
 });
 
-// Hover function for more information
-$('#hub').mouseenter(function(){
-    $('body').append("<div id='hoveringTooltip' style='position:fixed;'></div>");
-    $('#hoveringTooltip').html("Your code is on the back of your Hub. Alternatively, please set up you hub with the Watchai App which will obtain your code automatically.");
-    $('#hoveringTooltip').css({
-        "top" : $(this).offset().top + MYTOPOFFSET,
-        "left" : $(this).offset().left + MYLEFTOFFSET
-    });
-});
-$('#hub').mouseleave(function(){
-    $('#hoveringTooltip').remove();
-});
 
 function onReg(){
 	
 	$("#add").show();
 	
-	user = $("#user2").val();
+	//user = $("#user2").val();
+	user = localStorage.getItem("user");
 	$.ajax({
 		url: 'GetAllThings?user3=' + user,
 		type: 'GET',
@@ -229,8 +221,8 @@ function clickAllThings(up, dr, st, sl, ty, zo, ro){
 	
 		sendnew(dr, st);
 		
-		user = $("#user2").val();
-		
+		//user = $("#user2").val();
+		user = localStorage.getItem("user");
 		$.ajax({
 			url: 'UpdateThing?thing3=' + dr + "&state=" + st + "&user4=" + user + "&serial2=" + sl 
 			+ "&type2=" + ty + "&zone2=" + zo + "&room2=" + ro,
