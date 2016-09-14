@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="./css/jquery-ui.structure.min.css" type="text/css"/>
     <link rel="stylesheet" href="./css/switch.css" type="text/css"/>
     <link rel="stylesheet" href="./css/styles.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/zone.css" type="text/css"/>
     
     <script>
     $('#userArea').append(localStorage.getItem("user"));
@@ -29,9 +30,28 @@
   });
   </script>
  
+<style>
+    
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <!-- <script>
+  $( function() {
+    $( "#speed" ).selectmenu();
+ 
+    $( "#files" ).selectmenu();
+ 
+    $( "#number" )
+      .selectmenu()
+      .selectmenu( "menuWidget" )
+        .addClass( "overflow" );
+ 
+    $( "#salutation" ).selectmenu();
+  } );
+  </script> -->
   </head>
 
-  <body>
+  <body onload="showZones();">
 
 
     <h1>Zones</h1>
@@ -39,7 +59,28 @@
 <div id='userArea'></div>
 </fieldset>
 
+
+<fieldset>
+<div id='menuArea'></div>
+</fieldset>
+
+
+<!-- <fieldset>
+  <legend>Zones</legend>
+ <form action="/AddZone" method="get" accept-charset="utf-8">
+   
+   <label for="zone"><input type="text" name="zone" id="zone" placeholder="Name your zone" size="65"/></label>
+   <br/>
+   <button id="zoneBtn" type="button">Add Zone</button>
+   <br/>
+</form>
+<p/>
+</fieldset>
+
+</div> -->
+
 <div id="logArea">
+
 <fieldset>
   <legend>Add Zone </legend>
  <!-- <form action="/AddZone" method="get" accept-charset="utf-8"> -->
@@ -55,12 +96,47 @@
 </div>
 
 
+
+
 <!-- A central results field for all tabs to display their results too -->
 
 
 <fieldset>
 <div id='resultScreen'></div>
 </fieldset>
+
+<div class="demo">
+ 
+<form action="#">
+ 
+  <fieldset>
+<label for="speed">Select a speed</label>
+    <select name="speed" id="speed">
+      <option>Slower</option>
+      <option>Slow</option>
+      <option selected="selected">Medium</option>
+      <option>Fast</option>
+      <option>Faster</option>
+    </select>
+
+    <label for="files">Select a file</label>
+    <select name="files" id="files">
+      <optgroup label="Scripts">
+        <option value="jquery">jQuery.js</option>
+        <option value="jqueryui">ui.jQuery.js</option>
+      </optgroup>
+      <optgroup label="Other files">
+        <option value="somefile">Some unknown file</option>
+        <option value="someotherfile">Some other file with a very long option text</option>
+      </optgroup>
+    </select>
+ 
+ 
+  </fieldset>
+ 
+</form>
+ 
+</div>
     
   </body>
 </html>

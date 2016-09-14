@@ -47,8 +47,14 @@ public enum DAO {
 		}*/
 	
 	/**
-	 * Method for adding a Door object
-	 * @param courseID, courseName, fullOrPartTime, courseCredits, courseDuration, tutorID, courseTutor
+	 * Method for adding a thing object
+	 * @param thing
+	 * @param state
+	 * @param user
+	 * @param serial
+	 * @param type
+	 * @param zone
+	 * @param room
 	 */
 	
 	public void add(String thing, String state, String user, String serial, String type, String zone, String room) {
@@ -170,7 +176,7 @@ public enum DAO {
 		}
 	
 	/**
-	 * Method to return all courses in the datastore
+	 * Method to return all things in the datastore
 	 * @return courses
 	 */
 	
@@ -181,6 +187,24 @@ public enum DAO {
 		NamespaceManager.set(user);
 		
 		Query query = new Query("Thing");
+		PreparedQuery pq = datastore.prepare(query);
+		List<Entity> dList = pq.asList(FetchOptions.Builder.withDefaults());
+		
+		return dList;
+		}
+	
+	/**
+	 * Method to return all zones in the datastore
+	 * @return courses
+	 */
+	
+	@SuppressWarnings("unchecked")
+	public List<Entity> getAllZones(String user) {
+
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		NamespaceManager.set(user);
+		
+		Query query = new Query("Zone");
 		PreparedQuery pq = datastore.prepare(query);
 		List<Entity> dList = pq.asList(FetchOptions.Builder.withDefaults());
 		
@@ -217,6 +241,7 @@ public enum DAO {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		NamespaceManager.set(user);
 		Entity en = new Entity("Zone", zone);
+		en.setProperty("zone", zone);
 		datastore.put(en);
 	}
 	
