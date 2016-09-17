@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.Login;
 
 import java.io.IOException;
 
@@ -12,45 +12,42 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
-import com.bw.DAO;
+
+import uk.ac.mmu.watchai.DAO.DAO;
 
 /**
  * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
  * 
- * A servlet to insert a course into the database
+ */
+ 
+ /**
+ * A for logging into the webservice/apps
  *
  */
 
-@WebServlet("/AddThing")
+@WebServlet("/LogIn")
 @SuppressWarnings("serial")
-public class AddThing extends HttpServlet {
+public class LogIn extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response)
 throws IOException {
 	
-	System.out.println("Updating door state... ");
+	System.out.println("Logging in... ");
 	
 	response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Pragma", "no-cache");
 
-/*
- * Methods for xml, json and text with their
- * corresponding JSP pages which format results. 
- */
-
-	String thing = request.getParameter("thing");
-	String state = request.getParameter("state");
-	String user = request.getParameter("user");
-	String serial = request.getParameter("serial");
-	String type = request.getParameter("type");
-	String zone = request.getParameter("zone");
-	String room = request.getParameter("room");
+    String user = request.getParameter("user");
+	String pass = request.getParameter("pass");
 	
+	DAO.INSTANCE.logIn(user, pass);
 	
-	DAO.INSTANCE.add(thing, state, user, serial, type, zone, room);
-	
-	String d = thing + " " + state + " " + user + " " + serial + " " + type + " " + zone + " " + room;
+	String d = user + " " + pass;
 	
 	request.setAttribute("d", d);
 	
@@ -61,23 +58,11 @@ throws IOException {
 	String text = d.toString();
 	request.setAttribute("text", text);
 	
-	String format = request.getParameter("format");
 	String outputPage;
-	if ("xml".equals(format)) {
-	    response.setContentType("text/xml");
-	    outputPage = "/WEB-INF/results/insertXML.jsp";
-	  } else if ("json".equals(format)) {
-	  	
 	    response.setContentType("application/json");
 	    outputPage = "/WEB-INF/results/course-json.jsp";
-	  } else if ("text".equals(format)){
-	    response.setContentType("text/plain");
-	    outputPage = "/WEB-INF/results/insertText.jsp";
-	  } else {
-	  	response.setContentType("application/json");
-	        outputPage = "/WEB-INF/results/course-json.jsp";
-	  }
-	RequestDispatcher dispatcher =
+	
+	    RequestDispatcher dispatcher =
 		      request.getRequestDispatcher(outputPage);
 		    try {
 				dispatcher.include(request, response);
@@ -86,7 +71,7 @@ throws IOException {
 				e.printStackTrace();
 			}
 	
-	response.sendRedirect("localhost:8888/#tab3");
+	response.sendRedirect("#tab2");
 	}
 
 

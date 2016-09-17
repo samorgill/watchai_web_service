@@ -6,15 +6,31 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet>
 		<servlet-name>AddThing</servlet-name>
-		<servlet-class>com.bw.AddThing</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Add.AddThing</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddThing</servlet-name>
 		<url-pattern>/AddThing</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>Monitor</servlet-name>
+		<servlet-class>uk.ac.mmu.watchai.Add.Monitor</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Monitor</servlet-name>
+		<url-pattern>/Monitor</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>GetMonitors</servlet-name>
+		<servlet-class>uk.ac.mmu.watchai.Get.GetMonitors</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetMonitors</servlet-name>
+		<url-pattern>/GetMonitors</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>AddZone</servlet-name>
-		<servlet-class>com.bw.Add.Zones</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Add.Zones</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddZone</servlet-name>
@@ -22,7 +38,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>GetAllZones</servlet-name>
-		<servlet-class>com.bw.Get.GetAllZones</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Get.GetAllZones</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllZones</servlet-name>
@@ -30,7 +46,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>GetAllThings</servlet-name>
-		<servlet-class>com.bw.GetAllThings</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Get.GetAllThings</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllThings</servlet-name>
@@ -38,7 +54,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>LogIn</servlet-name>
-		<servlet-class>com.bw.LogIn</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Login.LogIn</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogIn</servlet-name>
@@ -46,7 +62,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>Register</servlet-name>
-		<servlet-class>com.bw.Register</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Login.Register</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Register</servlet-name>
@@ -55,7 +71,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>GetThing</servlet-name>
-		<servlet-class>com.bw.GetThing</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Get.GetThing</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetThing</servlet-name>
@@ -63,7 +79,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>GetAllDoors</servlet-name>
-		<servlet-class>com.bw.GetAllDoors</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Get.GetAllDoors</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GetAllDoors</servlet-name>
@@ -71,7 +87,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>UpdateThing</servlet-name>
-		<servlet-class>com.bw.UpdateThing</servlet-class>
+		<servlet-class>uk.ac.mmu.watchai.Add.UpdateThing</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UpdateThing</servlet-name>

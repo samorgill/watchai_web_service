@@ -1,4 +1,4 @@
-package com.bw.Add;
+package uk.ac.mmu.watchai.Add;
 
 import java.io.IOException;
 
@@ -9,8 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bw.DAO;
 import com.google.gson.Gson;
+
+import uk.ac.mmu.watchai.DAO.DAO;
+
+/**
+ * 
+ * @author Samuel Orgill 15118305
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
+ * 
+ */
 
 /**
  * Servlet implementation class Zones
@@ -58,26 +70,11 @@ public class Zones extends HttpServlet {
     	String json = gson.toJson(d);
     	request.setAttribute("json", json);
     	
-    	String text = d.toString();
-    	request.setAttribute("text", text);
-    	
-    	String format = request.getParameter("format");
     	String outputPage;
-    	if ("xml".equals(format)) {
-    	    response.setContentType("text/xml");
-    	    outputPage = "/WEB-INF/results/insertXML.jsp";
-    	  } else if ("json".equals(format)) {
-    	  	
     	    response.setContentType("application/json");
     	    outputPage = "/WEB-INF/results/course-json.jsp";
-    	  } else if ("text".equals(format)){
-    	    response.setContentType("text/plain");
-    	    outputPage = "/WEB-INF/results/insertText.jsp";
-    	  } else {
-    	  	response.setContentType("application/json");
-    	        outputPage = "/WEB-INF/results/course-json.jsp";
-    	  }
-    	RequestDispatcher dispatcher =
+
+    	    RequestDispatcher dispatcher =
     		      request.getRequestDispatcher(outputPage);
     		    try {
     				dispatcher.include(request, response);

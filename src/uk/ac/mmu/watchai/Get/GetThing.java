@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.Get;
 
 import java.io.IOException;
 
@@ -15,14 +15,22 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
 
-import java.util.List;
-import com.bw.DAO;;
+import uk.ac.mmu.watchai.DAO.DAO;
+import uk.ac.mmu.watchai.Model.Thing;
+
+import java.util.List;;
 
 /**
  * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
  * 
+ */
+/**
  * A servlet to search for a particular course in the database
  *
  */
@@ -44,42 +52,16 @@ throws IOException {
 	
 	Thing things = DAO.INSTANCE.getThing(searchThing);
 	
-	/*
-	 * Methods for xml, json and text with their
-	 * corresponding JSP pages which format results. 
-	 */
-	
 	System.out.println(things);
 	request.setAttribute("thingList", things);
-	
-	
 	
 	Gson gson = new Gson();
 	String json = gson.toJson(things);
 	request.setAttribute("json", json);
 	
-	/*for(int i = 0; i < doors.size(); i++){
-	String text = doors.get(i).toString();
-	request.setAttribute("text", text);}*/
-	
-	String format = request.getParameter("format");
-	
-	 String outputPage;
-	
-	if ("xml".equals(format)) {
-	  response.setContentType("text/xml");
-	  outputPage = "/WEB-INF/results/course-xml.jsp";
-	} else if ("json".equals(format)) {
-		
+	String outputPage;
 	  response.setContentType("application/json");
 	  outputPage = "/WEB-INF/results/course-json.jsp";
-	} else if ("text".equals(format)){
-	  response.setContentType("text/plain");
-	  outputPage = "/WEB-INF/results/course-string.jsp";
-	} else {
-		response.setContentType("application/json");
-	      outputPage = "/WEB-INF/results/course-json.jsp";
-	}
 	
 	RequestDispatcher dispatcher =
 	request.getRequestDispatcher(outputPage);

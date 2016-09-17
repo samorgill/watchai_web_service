@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.Get;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,59 +13,51 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Entity;
 import com.google.gson.Gson;
 
+import uk.ac.mmu.watchai.DAO.DAO;
+
 /**
  * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
  * 
- * A servlet to get all the things registered to a user
+ */
+
+ /**
+ * A servlet to get all the zones registered to a user
  *
  */
 
-@WebServlet("/GetAllThings")
+@WebServlet("/GetAllZones")
 @SuppressWarnings("serial")
-public class GetAllThings extends HttpServlet {
+public class GetAllZones extends HttpServlet {
 public void doGet(HttpServletRequest request, HttpServletResponse response)
 throws IOException {
 	
-	System.out.println("Getting all things... ");
+	System.out.println("Getting all zones... ");
 	
-	String user = request.getParameter("user3");
+	String user = request.getParameter("user5");
 	
 	response.setHeader("Cache-Control", "no-cache");
 	response.setHeader("Pragma", "no-cache");
 
-	/*
-	 * Methods for xml, json and text with their
-	 * corresponding JSP pages which format results. 
-	 */
-
-	List<Entity> things = DAO.INSTANCE.getAllThings(user);
-	System.out.println(things.toString());
-	request.setAttribute("thingList", things);
+	List<Entity> zones = DAO.INSTANCE.getAllZones(user);
+	System.out.println(zones.toString());
+	request.setAttribute("zoneList", zones);
 
 	Gson gson = new Gson();
-	String json = gson.toJson(things);
+	String json = gson.toJson(zones);
 	request.setAttribute("json", json);
-
-	String format = request.getParameter("format");
 
 	String outputPage;
 
-	if ("xml".equals(format)) {
-	  response.setContentType("text/xml");
-	  outputPage = "/WEB-INF/results/course-xml.jsp";
-	} else if ("json".equals(format)) {
 	  response.setContentType("application/json");
 	  outputPage = "/WEB-INF/results/course-json.jsp";
-	} else if ("text".equals(format)){
-	  response.setContentType("text/plain");
-	  outputPage = "/WEB-INF/results/course-string.jsp";
-	} else {
-		response.setContentType("application/json");
-	      outputPage = "/WEB-INF/results/course-json.jsp";
-	}
-	RequestDispatcher dispatcher =
+
+	  RequestDispatcher dispatcher =
 		      request.getRequestDispatcher(outputPage);
 		    try {
 				dispatcher.include(request, response);

@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.Login;
 
 import java.io.IOException;
 
@@ -12,38 +12,42 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gson.Gson;
-import com.bw.DAO;
+
+import uk.ac.mmu.watchai.DAO.DAO;
 
 /**
  * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
  * 
- * A servlet to insert a course into the database
+ */
+/**
+ * A servlet to register a user on the system.
  *
  */
 
-@WebServlet("/LogIn")
+@WebServlet("/Register")
 @SuppressWarnings("serial")
-public class LogIn extends HttpServlet {
+public class Register extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response)
 throws IOException {
 	
-	System.out.println("Logging in... ");
+	System.out.println("Registering... ");
 	
 	response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Pragma", "no-cache");
 
-/*
- * Methods for xml, json and text with their
- * corresponding JSP pages which format results. 
- */
-
-	String user = request.getParameter("user");
-	String pass = request.getParameter("pass");
+	String user = request.getParameter("user2");
+	String pass = request.getParameter("pass2");
+	String email = request.getParameter("email");
+	String phone = request.getParameter("phone");
+	String hub = request.getParameter("hub");
 	
-	
-	DAO.INSTANCE.logIn(user, pass);
+	DAO.INSTANCE.reg(user, pass,email, phone, hub);
 	
 	String d = user + " " + pass;
 	
@@ -58,21 +62,10 @@ throws IOException {
 	
 	String format = request.getParameter("format");
 	String outputPage;
-	if ("xml".equals(format)) {
-	    response.setContentType("text/xml");
-	    outputPage = "/WEB-INF/results/insertXML.jsp";
-	  } else if ("json".equals(format)) {
-	  	
 	    response.setContentType("application/json");
 	    outputPage = "/WEB-INF/results/course-json.jsp";
-	  } else if ("text".equals(format)){
-	    response.setContentType("text/plain");
-	    outputPage = "/WEB-INF/results/insertText.jsp";
-	  } else {
-	  	response.setContentType("application/json");
-	        outputPage = "/WEB-INF/results/course-json.jsp";
-	  }
-	RequestDispatcher dispatcher =
+
+	    RequestDispatcher dispatcher =
 		      request.getRequestDispatcher(outputPage);
 		    try {
 				dispatcher.include(request, response);
@@ -81,7 +74,7 @@ throws IOException {
 				e.printStackTrace();
 			}
 	
-	response.sendRedirect("#tab2");
+	response.sendRedirect("localhost:8888/#tab3");
 	}
 
 

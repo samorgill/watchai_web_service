@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.Get;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,12 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Entity;
 import com.google.gson.Gson;
 
+import uk.ac.mmu.watchai.DAO.DAO;
+
 /**
  * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
  * 
- * A servlet to get all courses in the database
+ */
+
+ /**
+ * A servlet to get all doors in the database
+ * Deprecated now with GetAllThings
  *
  */
 
@@ -45,29 +55,11 @@ throws IOException {
 	Gson gson = new Gson();
 	String json = gson.toJson(doors);
 	request.setAttribute("json", json);
-
-	for(int i = 0; i < doors.size(); i++){
-	String text = doors.get(i).toString();
-	request.setAttribute("text", text);}
-
-	String format = request.getParameter("format");
-
 	String outputPage;
-
-	if ("xml".equals(format)) {
-	  response.setContentType("text/xml");
-	  outputPage = "/WEB-INF/results/course-xml.jsp";
-	} else if ("json".equals(format)) {
 	  response.setContentType("application/json");
 	  outputPage = "/WEB-INF/results/course-json.jsp";
-	} else if ("text".equals(format)){
-	  response.setContentType("text/plain");
-	  outputPage = "/WEB-INF/results/course-string.jsp";
-	} else {
-		response.setContentType("application/json");
-	      outputPage = "/WEB-INF/results/course-json.jsp";
-	}
-	RequestDispatcher dispatcher =
+
+	  RequestDispatcher dispatcher =
 		      request.getRequestDispatcher(outputPage);
 		    try {
 				dispatcher.include(request, response);

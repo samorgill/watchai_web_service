@@ -1,4 +1,4 @@
-package com.bw;
+package uk.ac.mmu.watchai.DAO;
 
 import java.util.List;
 
@@ -22,10 +22,18 @@ import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 
+import uk.ac.mmu.watchai.Model.Thing;
+
 
 /**
+ * 
  * @author Samuel Orgill 15118305
- * @version 7
+ * @version 4
+ * 15/9/2016
+ * Manchester Metropolitan University
+ * NW.5 Smartwatch Control of Environment
+ * Supervisor: Nick Whittaker
+ * 
  */
 
 /**
@@ -36,18 +44,10 @@ public enum DAO {
 	INSTANCE;
 	
 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	
-	/*public List<Door> listTodos() {
-		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select m from Door m");
-		List<Door> doors = q.getResultList();
-		System.out.println(doors);
-		return doors;
-		
-		}*/
+
 	
 	/**
-	 * Method for adding a thing object
+	 * Method for adding a thing object to the datastore
 	 * @param thing
 	 * @param state
 	 * @param user
@@ -73,13 +73,7 @@ public enum DAO {
 		en.setProperty("room", room);
 		
 		datastore.put(en);
-		/*
-		Door doory = new Door(doorName, state);
-		
-		return doory;
-		*/
-		
-			}
+	}
 	
 	/**
 	 * Method for adding a user to the database
@@ -193,6 +187,19 @@ public enum DAO {
 		return dList;
 		}
 	
+	@SuppressWarnings("unchecked")
+	public List<Entity> getAllMonitors(String user) {
+
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		NamespaceManager.set(user);
+		
+		Query query = new Query("Monitor");
+		PreparedQuery pq = datastore.prepare(query);
+		List<Entity> dList = pq.asList(FetchOptions.Builder.withDefaults());
+		return dList;
+		
+		}
+	
 	/**
 	 * Method to return all zones in the datastore
 	 * @return courses
@@ -211,6 +218,19 @@ public enum DAO {
 		return dList;
 		}
 	
+	
+	/**
+	 * A method for updating the state of a thing ie on/off in the database
+	 * @param thing
+	 * @param state
+	 * @param user
+	 * @param serial
+	 * @param type
+	 * @param zone
+	 * @param room
+	 * @return
+	 * @throws EntityNotFoundException
+	 */
 	public Thing updateThing(String thing, String state, String user, String serial, String type, String zone, String room) throws EntityNotFoundException{
 		
 		
@@ -234,7 +254,7 @@ public enum DAO {
 	}
 	
 	/**
-	 * Add Zone
+	 * Add Zone to the database
 	 * @param zone
 	 */
 	public void addZone(String zone, String user) {
@@ -242,6 +262,15 @@ public enum DAO {
 		NamespaceManager.set(user);
 		Entity en = new Entity("Zone", zone);
 		en.setProperty("zone", zone);
+		datastore.put(en);
+	}
+	
+	public void addMonitor(String type, String state, String user) {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		NamespaceManager.set(user);
+		Entity en = new Entity("Monitor", type);
+		en.setProperty("type", type);
+		en.setProperty("state", state);
 		datastore.put(en);
 	}
 	
