@@ -15,16 +15,7 @@ import com.google.gson.Gson;
 
 import uk.ac.mmu.watchai.DAO.DAO;
 
-/**
- * 
- * @author Samuel Orgill 15118305
- * @version 4
- * 15/9/2016
- * Manchester Metropolitan University
- * NW.5 Smartwatch Control of Environment
- * Supervisor: Nick Whittaker
- * 
- */
+
 
 /**
  * 
@@ -43,11 +34,6 @@ throws IOException {
 	response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Pragma", "no-cache");
 
-/*
- * Methods for xml, json and text with their
- * corresponding JSP pages which format results. 
- */
-
 	String thing = request.getParameter("thing");
 	String state = request.getParameter("state");
 	String user = request.getParameter("user");
@@ -56,7 +42,7 @@ throws IOException {
 	String zone = request.getParameter("zone");
 	String room = request.getParameter("room");
 	
-	
+	//Add thing to the database
 	DAO.INSTANCE.add(thing, state, user, serial, type, zone, room);
 	
 	String d = thing + " " + state + " " + user + " " + serial + " " + type + " " + zone + " " + room;
@@ -67,6 +53,7 @@ throws IOException {
 	String json = gson.toJson(d);
 	request.setAttribute("json", json);
 	
+	//Format JSON
 	String outputPage;
 	    response.setContentType("application/json");
 	    outputPage = "/WEB-INF/results/course-json.jsp";
