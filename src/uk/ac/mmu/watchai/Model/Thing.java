@@ -35,8 +35,7 @@ public class Thing {
 		setThing(tName);
 		setState(st);
 		setSerial(sl);
-	}
-		
+	}		
 	
 	public String getThingName() {
 		return thing;

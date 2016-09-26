@@ -131,13 +131,6 @@ public enum DAO {
 	@SuppressWarnings("unchecked")
 	public Thing getThing(String thing) throws EntityNotFoundException{
 		
-		/*EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select d from Door d where d.doorName = :doorName");
-	
-		q.setParameter("doorName", doorName);
-		List<Door> doors = q.getResultList(); 
-		return doors;*/
-		
 		DatastoreService dstore = DatastoreServiceFactory.getDatastoreService();
 		Key dKey = KeyFactory.createKey("Thing", thing);
 		

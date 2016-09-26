@@ -37,16 +37,8 @@ import uk.ac.mmu.watchai.DAO.DAO;
 public class AddThing extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response)
 throws IOException {
-	
-	System.out.println("Adding thing to your account...");
-	
 	response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Pragma", "no-cache");
-
-/*
- * Methods for xml, json and text with their
- * corresponding JSP pages which format results. 
- */
 
 	String thing = request.getParameter("thing");
 	String state = request.getParameter("state");
@@ -56,11 +48,8 @@ throws IOException {
 	String zone = request.getParameter("zone");
 	String room = request.getParameter("room");
 	
-	
 	DAO.INSTANCE.add(thing, state, user, serial, type, zone, room);
-	
 	String d = thing + " " + state + " " + user + " " + serial + " " + type + " " + zone + " " + room;
-	
 	request.setAttribute("d", d);
 	
 	Gson gson = new Gson();
@@ -76,10 +65,8 @@ throws IOException {
 		    try {
 				dispatcher.include(request, response);
 			} catch (ServletException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
 	response.sendRedirect("localhost:8888/#tab3");
 	}
 
