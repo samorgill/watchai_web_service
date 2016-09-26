@@ -43,13 +43,16 @@ public class Monitor extends HttpServlet {
 		try{
 			
 		response.setHeader("Cache-Control", "no-cache");
-	    response.setHeader("Pragma", "no-cache");
+		response.setHeader("Pragma", "no-cache");
 		
+		//Add to the database
 		DAO.INSTANCE.addMonitor(type, state, user);
 		
 		System.out.println(type);
 		request.setAttribute("thingList", type);
 		
+		
+		//Set as JSON
 		Gson gson = new Gson();
 		String json = gson.toJson(type);
 		request.setAttribute("json", json);

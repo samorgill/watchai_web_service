@@ -20,18 +20,6 @@ import uk.ac.mmu.watchai.Model.Thing;
 
 import java.util.List;;
 
-/**
- * 
- * @author Samuel Orgill 15118305
- * @version 4
- * 15/9/2016
- * Manchester Metropolitan University
- * NW.5 Smartwatch Control of Environment
- * Supervisor: Nick Whittaker
- * 
- */
-
-
  /**
  * A servlet to update the state of a thing, ie on/off, in the database
  *
@@ -59,13 +47,15 @@ throws IOException {
 	try{
 		
 	response.setHeader("Cache-Control", "no-cache");
-    response.setHeader("Pragma", "no-cache");
+	response.setHeader("Pragma", "no-cache");
 	
+	//Add to the database
 	Thing things = DAO.INSTANCE.updateThing(thing, state, user, serial, type, zone, room);
 	
 	System.out.println(things);
 	request.setAttribute("thingList", things);
 	
+	//Set JSON
 	Gson gson = new Gson();
 	String json = gson.toJson(things);
 	request.setAttribute("json", json);
