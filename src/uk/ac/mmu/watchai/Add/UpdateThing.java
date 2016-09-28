@@ -20,6 +20,13 @@ import uk.ac.mmu.watchai.Model.Thing;
 
 import java.util.List;;
 
+
+/**
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
+ */
+
  /**
  * A servlet to update the state of a thing, ie on/off, in the database
  *

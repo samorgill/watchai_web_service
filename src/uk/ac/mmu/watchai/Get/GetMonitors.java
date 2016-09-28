@@ -15,6 +15,13 @@ import com.google.gson.Gson;
 
 import uk.ac.mmu.watchai.DAO.DAO;
 
+
+/**
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
+ */
+
 /**
  * Servlet implementation class GetMonitors
  */
@@ -36,7 +43,7 @@ public class GetMonitors extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("Getting all zones... ");
+		System.out.println("Getting all monitors... ");
 		
 		String user = request.getParameter("user");
 		

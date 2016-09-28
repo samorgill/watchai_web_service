@@ -1,7 +1,10 @@
 /**
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
  * 
+ * Unimplemented zones feature, for future wrk
  */
-
 function openZone(){
 	window.open("Zones.html");
 }
@@ -29,9 +32,6 @@ function showZones(){
 function getAllZones(data){
 	var tr;	
 	myData = $.parseJSON(data);
-	//var dat = myData[0].propertyMap.zone;
-	
-	//$('#resultScreen').append(dat);
 	
 	console.log(myData[0].propertyMap.zone);
 	
@@ -56,46 +56,13 @@ function getAllZones(data){
 	    prn.append('</select> </fieldset>');
 	    $('#resultScreen').append(prn);
 	
-		/*for(var i = 0; i < myData.length; i++){
-			tr = $('<tr/>');
-			
-			tr.append(
-			'<ul id="menu">' + '<li class="ui-state-disabled"><div>' + myData[i].propertyMap.zone + '</div></li>'
-			+  '</ul>')
-			
-			tr.append('<td> </td>');
-		
-			$('#resultScreen').append(tr);
-						
-		}
-*/
 	}
-
-/*$( function() {
-    $( "#speed" ).selectmenu();
- 
-    $( "#files" ).selectmenu();
- 
-    $( "#number" )
-      .selectmenu()
-      .selectmenu( "menuWidget" )
-        .addClass( "overflow" );
- 
-    $( "#salutation" ).selectmenu();
-  } );*/
-  
-
-
-	
-
-
 
 $(document).ready(function(){
 	$("#zoneBtn").click(function(){
-		//user = $("#user2").val();
+	
 		user = localStorage.getItem("user");
-		zone = $("#zone").val();
-		//$('#userArea').append(localStorage.getItem("user"));	
+		zone = $("#zone").val();	
 		
 		$.ajax({
 			url: 'AddZone?user4=' + user + "&zone=" + zone,
@@ -109,7 +76,6 @@ $(document).ready(function(){
 		})
 		
 		alert('zone added');
-		//$('#logArea').slideUp();
 		
 	});
 	

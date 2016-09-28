@@ -15,6 +15,11 @@ import com.google.gson.Gson;
 
 import uk.ac.mmu.watchai.DAO.DAO;
 
+/**
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
+ */
 
 
 /**
@@ -28,6 +33,7 @@ import uk.ac.mmu.watchai.DAO.DAO;
 public class AddThing extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response)
 throws IOException {
+	
 	response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Pragma", "no-cache");
 
@@ -39,10 +45,6 @@ throws IOException {
 	String zone = request.getParameter("zone");
 	String room = request.getParameter("room");
 	
-<<<<<<< HEAD
-=======
-	//Add thing to the database
->>>>>>> 9766e2de672a1e74775e8ada6ff18893f969c952
 	DAO.INSTANCE.add(thing, state, user, serial, type, zone, room);
 	String d = thing + " " + state + " " + user + " " + serial + " " + type + " " + zone + " " + room;
 	request.setAttribute("d", d);

@@ -21,8 +21,15 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 import uk.ac.mmu.watchai.Model.Thing;
 
+
 /**
- * Data Accessor Object class
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
+ */
+
+/**
+ * Data Access Object class
  */
 
 public enum DAO {
@@ -159,6 +166,11 @@ public enum DAO {
 		return dList;
 	}
 	
+	/**
+	 * Method to query all monitors
+	 * @param user
+	 * @return
+	 */
 	
 	@SuppressWarnings("unchecked")
 	public List<Entity> getAllMonitors(String user) {

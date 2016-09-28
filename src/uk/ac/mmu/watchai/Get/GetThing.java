@@ -21,15 +21,11 @@ import uk.ac.mmu.watchai.Model.Thing;
 import java.util.List;;
 
 /**
- * 
- * @author Samuel Orgill 15118305
- * @version 4
- * 15/9/2016
- * Manchester Metropolitan University
- * NW.5 Smartwatch Control of Environment
- * Supervisor: Nick Whittaker
- * 
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
  */
+
 /**
  * A servlet to search for a particular course in the database
  *

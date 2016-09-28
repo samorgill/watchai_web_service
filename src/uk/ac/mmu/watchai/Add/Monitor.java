@@ -15,6 +15,13 @@ import com.google.gson.Gson;
 import uk.ac.mmu.watchai.DAO.DAO;
 import uk.ac.mmu.watchai.Model.Thing;
 
+
+/**
+ * @author Samuel Orgill 15118035
+ * NW5 Smartwatch Control of Environment
+ * September 2016
+ */
+
 /**
  * Servlet implementation class Monitor
  */

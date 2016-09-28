@@ -1,12 +1,8 @@
 <!doctype html>
 
-
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-
-    
-
     
     <title>BabyWatch</title>
     <script src="./scripts/jquery-2.2.1.js" type="text/javascript"></script>
@@ -14,7 +10,6 @@
 	<script src="./scripts/jquery-ui.min.js" type="text/javascript"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
 	<script src="./scripts/jquery-utils.js" type="text/javascript"></script>
-	
 	<link rel="stylesheet" href="./css/jquery-ui.theme.min.css" type="text/css"/>
 	<link rel="stylesheet" href="./css/jquery-ui.structure.min.css" type="text/css"/>
     <link rel="stylesheet" href="./css/switch.css" type="text/css"/>
@@ -30,106 +25,67 @@
 
   <body>
 
-
-    <h1> BabyWatch</h1>
-<fieldset>
-<div id='userArea'></div>
-</fieldset>
-
-<button onclick="openZone();">Zone</button>
-
-<!-- <div id=tabs>
-	<ul>
-		<li><a href="#tab1">Home</a></li>
-		<li><a href="#tab2">Add</a></li>
-		<li><a href="#tab3">Zones</a></li>
-		<li><a href="#tab4">Recipes</a></li>
+    <h1>Watchai</h1>
+	<fieldset>
+	<div id='userArea'></div>
+	</fieldset>
 	
-		
-	</ul> -->
-
-
-<!-- 
-
-<fieldset>
-  <legend>Log In </legend>
-  
-  
-  <form action="/LogIn" method="post" accept-charset="utf-8">
- 
-   <label for="user">Username:<input type="text" name="user" id="user" size="65"/></label>
-   <br/>
-   <label for="pass">Password:<input type="text" name="pass" id="pass" size="65"/></label>
-   <br/>
-   <tr>
-
-</tr>
-   <td colspan="2" align="right"><input type="submit" value="LogIn" id="login" /></td>
-      
-   <br/>
-</form>
-
-<p/>
-</fieldset>
- -->
-
-<div id="logArea">
-<fieldset>
-  <legend>Register </legend>
-  <form action="/Register" method="post" accept-charset="utf-8">
-   <label for="user2"><input type="text" name="user2" id="user2" placeholder="Enter a Username" size="65"/></label>
-   <br/>
-   <label for="pass2"><input type="text" name="pass2" id="pass2" placeholder="Enter a password" size="65"/></label>
-   <br/>
-   <label for="email"><input type="text" name="email" id="email" placeholder="Enter your email" size="65"/></label>
-   <br/>
-   <label for="phone"><input type="text" name="phone" id="phone" placeholder="[Option] Enter your phone number (for text alerts)" size="65"/></label>
-   <br/>
-   <label for="hub"><input type="text" name="hub" id="hub" placeholder="Enter your hub code" size="65"/></label>
-   <br/>
-   <td colspan="2" align="right"><input type="submit" value="Register" id="register" /></td>
-   <br/>
-</form>
-<p/>
-</fieldset>
-
-</div>
-
-
-<!-- A central results field for all tabs to display their results too -->
-
-
-<fieldset>
-<div id='resultScreen'></div>
-</fieldset>
-
-
-<div id="add">
-
-<fieldset>
-  <legend>Add a Thing</legend>
-
- 
-   <label for="thing"><input type="text" name="thing" id="thing" placeholder="Name of thing"/></label>
-   <select id="state">
-   <option value="Locked" selected="selected">On</option>
-   <option value="Unlocked">Off</option>
-   </select>
-   <br/>
-   <label for="serial"><input type="text" name="serial" id="serial" placeholder="Serial No."/></label>
-   <tr>
-</tr>
-  <label for="type"><input type="text" name="type" id="type" placeholder="Type ie light or lock"/></label>
-    <label for="zone"><input type="text" name="zone" id="zone" placeholder="Add to a Zone"/></label>
-      <label for="room"><input type="text" name="room" id="room" placeholder="Add to a Room"/></label>
-   
-   <button type="button" id="addit" onclick="addit();">Add It!</button>
-  
-   <br/>
-
-
-</fieldset>
-</div>
-    
+	<!-- An area to register your account -->
+	
+	<div id="logArea">
+	<fieldset>
+	  <legend>Register </legend>
+	  <form action="/Register" method="post" accept-charset="utf-8">
+	   <label for="user2"><input type="text" name="user2" id="user2" placeholder="Enter a Username" size="65"/></label>
+	   <br/>
+	   <label for="pass2"><input type="text" name="pass2" id="pass2" placeholder="Enter a password" size="65"/></label>
+	   <br/>
+	   <label for="email"><input type="text" name="email" id="email" placeholder="Enter your email" size="65"/></label>
+	   <br/>
+	   <label for="phone"><input type="text" name="phone" id="phone" placeholder="[Option] Enter your phone number (for text alerts)" size="65"/></label>
+	   <br/>
+	   <label for="hub"><input type="text" name="hub" id="hub" placeholder="Enter your hub code" size="65"/></label>
+	   <br/>
+	   <td colspan="2" align="right"><input type="submit" value="Register" id="register" /></td>
+	   <br/>
+	</form>
+	<p/>
+	</fieldset>
+	
+	</div>
+	
+	
+	<!-- A central results field for all tabs to display their results too -->
+	
+	<fieldset>
+	<div id='resultScreen'></div>
+	</fieldset>
+	
+	<!-- An area to add a thing to the datastore -->	
+	<div id="add">
+	
+	<fieldset>
+	  <legend>Add a Thing</legend>
+	 
+	   <label for="thing"><input type="text" name="thing" id="thing" placeholder="Name of thing"/></label>
+	   <select id="state">
+	   <option value="Locked" selected="selected">On</option>
+	   <option value="Unlocked">Off</option>
+	   </select>
+	   <br/>
+	   <label for="serial"><input type="text" name="serial" id="serial" placeholder="Serial No."/></label>
+	   <tr>
+	</tr>
+	  <label for="type"><input type="text" name="type" id="type" placeholder="Type ie light or lock"/></label>
+	    <label for="zone"><input type="text" name="zone" id="zone" placeholder="Add to a Zone"/></label>
+	      <label for="room"><input type="text" name="room" id="room" placeholder="Add to a Room"/></label>
+	   
+	   <button type="button" id="addit" onclick="addit();">Add It!</button>
+	  
+	   <br/>
+	
+	</fieldset>
+	</div>
+	    
   </body>
 </html>
